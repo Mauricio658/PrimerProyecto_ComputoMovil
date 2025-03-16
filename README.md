@@ -40,7 +40,6 @@ c^2 = a^2 + b^2
 **Datos requeridos:** `a`, `b`
 
 ## 📷 Capturas de Pantalla
-*(Aquí puedes insertar imágenes o GIFs mostrando la aplicación en funcionamiento)*
 
 ## 🛠️ Tecnologías Utilizadas
 - **Lenguaje:** Java/Kotlin (para Android)
