@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Calculadora Magica</string>
+    <string name="seleccionaformula">Selecciona una formula</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_calcular">Calcular</string>
 </resources>
