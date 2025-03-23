@@ -18,10 +18,10 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 ```
 **Datos requeridos:** `a`, `b`, `c`
 
-### 2. **Área de un círculo**
-Calcula el área de un círculo:
+### 2. **Volumen de un cilindro**
+Calcula el volumen de un cilindro:
 ```math
-A = \pi r^2
+A = \pi r^2 * h
 ```
 **Datos requeridos:** `r` (radio)
 
