@@ -23,7 +23,7 @@ Calcula el volumen de un cilindro:
 ```math
 A = \pi r^2 * h
 ```
-**Datos requeridos:** `r` (radio)
+**Datos requeridos:** `r` (radio) , `h` (altura)
 
 ### 3. **Perímetro de un rectángulo**
 Calcula el perímetro de un rectángulo:
