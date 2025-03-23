@@ -2,9 +2,8 @@
 <resources>
     <string-array name="formulas_array">
         <item>Ecuación de segundo grado</item>
-        <item>Área de un círculo</item>
+        <item>Volumen de un Cilindro</item>
         <item>Perímetro de un rectángulo</item>
-        <item>Teorema de Pitágoras</item>
         <item>Fórmula de la velocidad</item>
     </string-array>
 </resources>
