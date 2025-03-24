@@ -12,8 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/akaya_kanadaka"
-        android:text="Cómputo Móvil"
-        android:textSize="24sp"
+        android:text="@string/nombre_materia"
+        android:textSize="35sp"
+        android:textColor="@color/texto_principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -46,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/tv_textoFormulario"
@@ -74,8 +75,8 @@
 
     <ImageView
         android:id="@+id/iv_formula"
-        android:layout_width="352dp"
-        android:layout_height="216dp"
+        android:layout_width="343dp"
+        android:layout_height="161dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_Calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
