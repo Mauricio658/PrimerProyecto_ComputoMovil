@@ -5,4 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_calcular">Calcular</string>
     <string name="nombre_materia">Cómputo Móvil</string>
+    <string name="valor_1">Valor 1</string>
+    <string name="valor_2">Valor 2</string>
+    <string name="valor_3">Valor 3</string>
+    <string name="completa_todos_los_valores_requeridos">Completa todos los valores requeridos</string>
 </resources>

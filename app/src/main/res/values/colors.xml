@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bt_calcular">#0CB27A</color>
     <color name="texto_principal">#E7E1E1</color>
+    <color name="fondo_sp">#365936</color>
+    <color name="btn_color">#E7E1E1</color>
+
 </resources>

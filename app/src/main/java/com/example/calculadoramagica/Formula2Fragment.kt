@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +34,17 @@ class Formula2Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_formula2, container, false)
+        val view = inflater.inflate(R.layout.fragment_formula2, container, false)
+
+        val valor1 = arguments?.getDouble("valor1")
+        val valor2 = arguments?.getDouble("valor2")
+        val valor3 = arguments?.getDouble("valor3")
+
+        // Ahora puedes usar esos valores en tu lógica
+        // Ejemplo: mostrarlo con un Toast
+        Toast.makeText(requireContext(), "a=$valor1, b=$valor2, c=$valor3", Toast.LENGTH_SHORT).show()
+
+        return view
     }
 
     companion object {
