@@ -4,16 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Formula1Fragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FORMULA 1"
+        android:fontFamily="@font/akaya_kanadaka"
+        android:text="@string/resultado"
+        android:textColor="@color/texto_principal"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+
+    <TextView
+        android:id="@+id/tv_ingresaste"
+        android:layout_width="226dp"
+        android:layout_height="74dp"
+        android:fontFamily="@font/akaya_kanadaka"
+        android:gravity="center"
+        android:text="@string/ingresaste_fragment1"
+        android:textColor="@color/texto_principal"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
+    <TextView
+        android:id="@+id/tv_valores_ingresados"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/akaya_kanadaka"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/variables_fragment1"
+        android:textColor="@color/texto_principal"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_ingresaste" />
+
+    <Button
+        android:id="@+id/btn_calcular_de_nuevo"
+        android:layout_width="292dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/texto_principal"
+        android:fontFamily="@font/akaya_kanadaka"
+        android:gravity="center"
+        android:text="@string/calcular_de_nuevo"
+        android:textAlignment="center"
+        android:textColor="@color/fondo_sp"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
+
+    <TextView
+        android:id="@+id/tv_resultado"
+        android:layout_width="314dp"
+        android:layout_height="127dp"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:text="@string/resultado_fragment1"
+        android:textColor="@color/texto_principal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,53 +19,39 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Formula1Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_formula1, container, false)
+        val tvResultado = view.findViewById<TextView>(R.id.tv_resultado)
+        val tvValores = view.findViewById<TextView>(R.id.tv_valores_ingresados)
 
-        val valor1 = arguments?.getDouble("valor1")
-        val valor2 = arguments?.getDouble("valor2")
-        val valor3 = arguments?.getDouble("valor3")
 
-        // Ahora puedes usar esos valores en tu lógica
+        val a = arguments?.getDouble("valor1") ?: 0.0
+        val b = arguments?.getDouble("valor2") ?: 0.0
+        val c = arguments?.getDouble("valor3") ?: 0.0
+
+        val discriminante = b * b - 4 * a * c
+        val resultado: String
+
+        if (a == 0.0) {
+            resultado = "Esto no es una ecuación de segundo grado (a = 0)"
+        } else if (discriminante < 0) {
+            resultado = "La ecuación no tiene soluciones reales"
+        } else {
+            val x1 = (-b + Math.sqrt(discriminante)) / (2 * a)
+            val x2 = (-b - Math.sqrt(discriminante)) / (2 * a)
+            resultado = "Las soluciones son:\nx1 = %.2f\nx2 = %.2f".format(x1, x2)
+        }
+        tvValores.text = "a = $a\nb = $b\nc = $c"
+// ✅ Mostrar en el TextView
+        tvResultado.text = resultado
+
         // Ejemplo: mostrarlo con un Toast
-        Toast.makeText(requireContext(), "a=$valor1, b=$valor2, c=$valor3", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "a=$a, b=$b, c=$c", Toast.LENGTH_SHORT).show()
 
         return view
-    }
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Formula1Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Formula1Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

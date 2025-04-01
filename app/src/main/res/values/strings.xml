@@ -9,4 +9,9 @@
     <string name="valor_2">Valor 2</string>
     <string name="valor_3">Valor 3</string>
     <string name="completa_todos_los_valores_requeridos">Completa todos los valores requeridos</string>
+    <string name="resultado">Resultado</string>
+    <string name="resultado_fragment1">Resultado:</string>
+    <string name="ingresaste_fragment1">Ingresaste</string>
+    <string name="variables_fragment1">a = 0, b = 0, c = 0</string>
+    <string name="calcular_de_nuevo">Calcular de nuevo</string>
 </resources>
