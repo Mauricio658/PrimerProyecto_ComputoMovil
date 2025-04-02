@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/tv_ingresaste"
-        android:layout_width="226dp"
-        android:layout_height="74dp"
+        android:layout_width="382dp"
+        android:layout_height="73dp"
         android:fontFamily="@font/akaya_kanadaka"
         android:gravity="center"
         android:text="@string/ingresaste_fragment1"
@@ -35,26 +35,26 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.43" />
 
     <TextView
         android:id="@+id/tv_valores_ingresados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/akaya_kanadaka"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
         android:text="@string/variables_fragment1"
         android:textColor="@color/texto_principal"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_ingresaste" />
 
@@ -78,19 +78,32 @@
 
     <TextView
         android:id="@+id/tv_resultado"
-        android:layout_width="314dp"
-        android:layout_height="127dp"
+        android:layout_width="348dp"
+        android:layout_height="215dp"
+        android:fontFamily="@font/akaya_kanadaka"
         android:gravity="center_horizontal"
         android:padding="16dp"
         android:text="@string/resultado_fragment1"
         android:textColor="@color/texto_principal"
-        android:textSize="18sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.773" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="342dp"
+        android:layout_height="188dp"
+        android:src="@drawable/formula1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

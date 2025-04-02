@@ -5,19 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import kotlin.math.sqrt
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Formula1Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Formula1Fragment : Fragment() {
 
     override fun onCreateView(
@@ -37,20 +28,29 @@ class Formula1Fragment : Fragment() {
         val resultado: String
 
         if (a == 0.0) {
-            resultado = "Esto no es una ecuación de segundo grado (a = 0)"
+            resultado = getString(R.string.esto_no_es_una_ecuaci_n_de_segundo_grado_a_0)
         } else if (discriminante < 0) {
-            resultado = "La ecuación no tiene soluciones reales"
+            resultado = getString(R.string.lo_siento_tu_ecuaci_n_no_tiene_soluciones_reales)
         } else {
-            val x1 = (-b + Math.sqrt(discriminante)) / (2 * a)
-            val x2 = (-b - Math.sqrt(discriminante)) / (2 * a)
-            resultado = "Las soluciones son:\nx1 = %.2f\nx2 = %.2f".format(x1, x2)
+            val x1 = (-b + sqrt(discriminante)) / (2 * a)
+            val x2 = (-b - sqrt(discriminante)) / (2 * a)
+            resultado =
+                getString(R.string.felicidades_tu_ecuaci_n_tiene_soluciones_reales_las_soluciones_son_x1_2f_x2_2f).format(x1, x2)
         }
-        tvValores.text = "a = $a\nb = $b\nc = $c"
-// ✅ Mostrar en el TextView
+        getString(R.string.a_b_c, a, b, c).also { tvValores.text = it }
+        // Mostrar en el TextView
         tvResultado.text = resultado
 
         // Ejemplo: mostrarlo con un Toast
-        Toast.makeText(requireContext(), "a=$a, b=$b, c=$c", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), "a=$a, b=$b, c=$c", Toast.LENGTH_SHORT).show()
+
+        val btnRecalcular = view.findViewById<Button>(R.id.btn_calcular_de_nuevo)
+
+        btnRecalcular.setOnClickListener {
+            // Regresar al fragmento anterior (MainFragment)
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
 
         return view
     }

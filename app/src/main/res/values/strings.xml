@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Calculadora Magica</string>
     <string name="seleccionaformula">Selecciona una formula</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_calcular">Calcular</string>
     <string name="nombre_materia">Cómputo Móvil</string>
     <string name="valor_1">Valor 1</string>
@@ -11,7 +9,35 @@
     <string name="completa_todos_los_valores_requeridos">Completa todos los valores requeridos</string>
     <string name="resultado">Resultado</string>
     <string name="resultado_fragment1">Resultado:</string>
-    <string name="ingresaste_fragment1">Ingresaste</string>
+    <string name="ingresaste_fragment1">Ingresaste los siguientes valores</string>
     <string name="variables_fragment1">a = 0, b = 0, c = 0</string>
+    <string name="variables_fragment2">r = 0, h = 0</string>
+    <string name="variables_fragment3">a = 0, b = 0</string>
+    <string name="variables_fragment4">vf = 0, vi = 0, t = 0</string>
     <string name="calcular_de_nuevo">Calcular de nuevo</string>
+    <string name="coeficiente_a">Coeficiente a</string>
+    <string name="coeficiente_b">Coeficiente b</string>
+    <string name="coeficiente_c">Coeficiente c</string>
+    <string name="altura">Altura</string>
+    <string name="radio">Radio</string>
+    <string name="base">Base</string>
+    <string name="velocidad_final">Velocidad final</string>
+    <string name="velocidad_inicial">Velocidad inicial</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="felicidades_tu_ecuaci_n_tiene_soluciones_reales_las_soluciones_son_x1_2f_x2_2f">Felicidades tu ecuación tiene soluciones reales \n\nLas soluciones son:\nx1 = %.2f\nx2 = %.2f</string>
+    <string name="lo_siento_tu_ecuaci_n_no_tiene_soluciones_reales">Lo siento \n Tu ecuación no tiene soluciones reales</string>
+    <string name="esto_no_es_una_ecuaci_n_de_segundo_grado_a_0">Esto no es una ecuación de segundo grado (a = 0)</string>
+    <string name="el_radio_y_la_altura_deben_ser_mayores_que_cero">El radio y la altura deben ser mayores que cero.</string>
+    <string name="el_volumen_del_cilindro_es_v_2f">El volumen del cilindro es:\nV = %.2f</string>
+    <string name="la_base_y_la_altura_deben_ser_mayores_que_cero">La base y la altura deben ser mayores que cero.</string>
+    <string name="el_per_metro_del_rect_ngulo_es_p_2f">El perímetro del rectángulo es:\nP = %.2f</string>
+    <string name="el_tiempo_debe_ser_mayor_que_cero_para_calcular_la_aceleraci_n">El tiempo debe ser mayor que cero para calcular la aceleración.</string>
+    <string name="radio_altura">Radio = %1$.2f\nAltura = %2$.2f</string>
+    <string name="la_aceleraci_n_es_a_2f_m_s">La aceleración es:\na = %.2f m/s²</string>
+    <string name="velocidad_final_velocidad_inicial_tiempo">Velocidad final = %1$.2f\nVelocidad inicial = %2$.2f\nTiempo = %3$.2f</string>
+    <string name="a_b_c">a = %1$.2f\nb = %2$.2f\nc = %3$.2f</string>
+    <string name="spinner1">Ecuación de segundo grado</string>
+    <string name="spinner2">Volumen de un Cilindro</string>
+    <string name="spinner3">Perímetro de un rectángulo</string>
+    <string name="spinner4">Fórmula de la aceleración</string>
 </resources>

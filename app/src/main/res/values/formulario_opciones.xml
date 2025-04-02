@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="formulas_array">
-        <item>Ecuación de segundo grado</item>
-        <item>Volumen de un Cilindro</item>
-        <item>Perímetro de un rectángulo</item>
-        <item>Fórmula de la aceleración</item>
+        <item>@string/spinner1</item>
+        <item>@string/spinner2</item>
+        <item>@string/spinner3</item>
+        <item>@string/spinner4</item>
     </string-array>
 </resources>

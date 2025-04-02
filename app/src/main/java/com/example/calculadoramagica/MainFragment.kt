@@ -46,12 +46,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        data class ValoresFormula(
-            val valor1: Double? = null,
-            val valor2: Double? = null,
-            val valor3: Double? = null
-        )
-
 
         val adapter = ArrayAdapter.createFromResource(
             requireContext(),
@@ -91,10 +85,12 @@ class MainFragment : Fragment() {
         )
 
         val configuraciones = listOf(
-            FormulaConfig(opciones[0], listOf("Coeficiente a", "Coeficiente b", "Coeficiente c")),
-            FormulaConfig(opciones[1], listOf("Radio", "Altura")),
-            FormulaConfig(opciones[2], listOf("Base", "Altura")),
-            FormulaConfig(opciones[3], listOf("Velocidad final", "Velocidad inicial", "Tiempo"))
+            FormulaConfig(opciones[0], listOf(getString(R.string.coeficiente_a),
+                getString(R.string.coeficiente_b), getString(R.string.coeficiente_c))),
+            FormulaConfig(opciones[1], listOf(getString(R.string.radio), getString(R.string.altura))),
+            FormulaConfig(opciones[2], listOf(getString(R.string.base), getString(R.string.altura))),
+            FormulaConfig(opciones[3], listOf(getString(R.string.velocidad_final),
+                getString(R.string.velocidad_inicial), getString(R.string.tiempo)))
         )
 
 
@@ -103,6 +99,7 @@ class MainFragment : Fragment() {
 
         // Cambiar la aspectos claves  cuando se seleccione una opción en el Spinner
         binding.spOpciones.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -111,43 +108,58 @@ class MainFragment : Fragment() {
             ) {
                 val opcionSeleccionada = opciones[position]
 
-                // Cambiar la imagen en el ImageView
+                // Cambiar imagen
                 imageMap[opcionSeleccionada]?.let { imageRes ->
                     binding.ivFormula.setImageResource(imageRes)
                 }
 
+                // Ocultar todos los inputs
                 binding.input1.visibility = View.GONE
                 binding.input2.visibility = View.GONE
                 binding.input3.visibility = View.GONE
 
-                // Busca la config correspondiente
+                // Verificar si es la ecuación de segundo grado
+                val esEcuacionSegundoGrado = opcionSeleccionada == configuraciones[0].nombre
+
+                // Determinar el tipo de entrada permitido
+                val inputTypeCorrecto = if (esEcuacionSegundoGrado)
+                    android.text.InputType.TYPE_CLASS_NUMBER or
+                            android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL or
+                            android.text.InputType.TYPE_NUMBER_FLAG_SIGNED
+                else
+                    android.text.InputType.TYPE_CLASS_NUMBER or
+                            android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
+
+                // Mostrar los inputs necesarios con hints y tipo correcto
                 configuraciones.find { it.nombre == opcionSeleccionada }?.hints?.let { hints ->
                     if (hints.isNotEmpty()) {
                         binding.input1.apply {
                             hint = hints[0]
+                            inputType = inputTypeCorrecto
                             visibility = View.VISIBLE
                         }
                     }
                     if (hints.size >= 2) {
                         binding.input2.apply {
                             hint = hints[1]
+                            inputType = inputTypeCorrecto
                             visibility = View.VISIBLE
                         }
                     }
                     if (hints.size >= 3) {
                         binding.input3.apply {
                             hint = hints[2]
+                            inputType = inputTypeCorrecto
                             visibility = View.VISIBLE
                         }
                     }
                 }
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
 
-            // Evento del botón Calcular
+        // Evento del botón Calcular
         binding.btCalcular.setOnClickListener {
 
             val opcionSeleccionada = binding.spOpciones.selectedItem.toString()
@@ -164,8 +176,6 @@ class MainFragment : Fragment() {
             val valor3 = if (binding.input3.visibility == View.VISIBLE)
                 binding.input3.text.toString().toDoubleOrNull() else null
 
-            val valores = ValoresFormula(valor1, valor2, valor3)
-
             // Validar si todos los necesarios están completos
             val camposNecesarios = config?.hints?.size ?: 0
             val valoresList = listOf(valor1, valor2, valor3).take(camposNecesarios)
@@ -175,13 +185,6 @@ class MainFragment : Fragment() {
                     getString(R.string.completa_todos_los_valores_requeridos), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            // Aquí se muestran los valores capturados:
-            /*Toast.makeText(
-                requireContext(),
-                "Valores:\n1: ${valores.valor1}\n2: ${valores.valor2}\n3: ${valores.valor3}",
-                Toast.LENGTH_LONG
-            ).show()*/
 
             val fragment = fragmentMap[opcionSeleccionada]?.withArguments(
                 "valor1" to valor1!!,
@@ -194,8 +197,6 @@ class MainFragment : Fragment() {
                     .replace(R.id.fcv_main, fragment)
                     .addToBackStack(null)
                     .commit()
-            } else {
-                Toast.makeText(requireContext(), "Opción no válida", Toast.LENGTH_SHORT).show()
             }
 
             // Limpiar los campos después del cálculo

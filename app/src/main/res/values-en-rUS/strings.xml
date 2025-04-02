@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Magic Calculator</string>
+    <string name="ingresaste_fragment1">You entered the following values</string>
+    <string name="variables_fragment1">a = 0, b = 0, c = 0</string>
+    <string name="variables_fragment2">r = 0, h = 0</string>
+    <string name="variables_fragment3">a = 0, b = 0</string>
+    <string name="variables_fragment4">vf = 0, vi = 0, t = 0</string>
+    <string name="seleccionaformula">Choose a formula</string>
+    <string name="btn_calcular">Calculate</string>
+    <string name="nombre_materia">Mobile Computing</string>
+    <string name="valor_1">Value 1</string>
+    <string name="valor_2">Value 2</string>
+    <string name="valor_3">Value 3</string>
+    <string name="completa_todos_los_valores_requeridos">Please fill in all the required values</string>
+    <string name="resultado">Result</string>
+    <string name="resultado_fragment1">Result:</string>
+    <string name="calcular_de_nuevo">Calculate again</string>
+    <string name="coeficiente_a">Coefficient a</string>
+    <string name="coeficiente_b">Coefficient b</string>
+    <string name="coeficiente_c">Coefficient c</string>
+    <string name="altura">Height</string>
+    <string name="radio">Radius</string>
+    <string name="base">Base</string>
+    <string name="velocidad_final">Final speed</string>
+    <string name="velocidad_inicial">Initial speed</string>
+    <string name="tiempo">Time</string>
+    <string name="felicidades_tu_ecuaci_n_tiene_soluciones_reales_las_soluciones_son_x1_2f_x2_2f">Congratulations, your equation has real solutions.\n\nThe solutions are:\nx1 = %.2f\nx2 = %.2f</string>
+    <string name="el_radio_y_la_altura_deben_ser_mayores_que_cero">The radius and height must be greater than zero.</string>
+    <string name="el_volumen_del_cilindro_es_v_2f">The volume of the cylinder is:\nV = %.2f</string>
+    <string name="lo_siento_tu_ecuaci_n_no_tiene_soluciones_reales">Sorry, your equation has no real solutions.</string>
+    <string name="esto_no_es_una_ecuaci_n_de_segundo_grado_a_0">This is not a second degree equation (a = 0)</string>
+    <string name="la_base_y_la_altura_deben_ser_mayores_que_cero">The base and height must be greater than zero.</string>
+    <string name="el_per_metro_del_rect_ngulo_es_p_2f">The perimeter of the rectangle is:\nP = %.2f</string>
+    <string name="el_tiempo_debe_ser_mayor_que_cero_para_calcular_la_aceleraci_n">Time must be greater than zero to calculate acceleration.</string>
+    <string name="radio_altura">Radius = %1$.2f\nHeight = %2$.2f</string>
+    <string name="la_aceleraci_n_es_a_2f_m_s">The acceleration is: \na = %.2f m/s²</string>
+    <string name="velocidad_final_velocidad_inicial_tiempo">Final velocity = %1$.2f\nInitial velocity = %2$.2f\nTime = %3$.2f</string>
+    <string name="a_b_c">a = %1$.2f\nb = %2$.2f\nc = %3$.2f</string>
+    <string name="spinner1">Equation of the second degree</string>
+    <string name="spinner2">Volume of a Cylinder</string>
+    <string name="spinner3">Perimeter of a rectangle</string>
+    <string name="spinner4">Acceleration formula</string>
+</resources>
