@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.calculadoramagica.databinding.FragmentMainBinding
+import android.text.TextWatcher
+import android.text.Editable
 
 //Función para pasar variables por los fragments
 fun <T : Fragment> T.withArguments(vararg pairs: Pair<String, Any?>): T {
@@ -23,8 +25,6 @@ fun <T : Fragment> T.withArguments(vararg pairs: Pair<String, Any?>): T {
     }
     return this
 }
-
-
 
 class MainFragment : Fragment() {
 
@@ -46,32 +46,29 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         val adapter = ArrayAdapter.createFromResource(
             requireContext(),
             R.array.formulas_array,
-            R.layout.spinner // Aquí se usa el layout personalizado
+            R.layout.spinner
         )
-        adapter.setDropDownViewResource(R.layout.spinner) // También para el desplegable
-
+        adapter.setDropDownViewResource(R.layout.spinner)
         binding.spOpciones.adapter = adapter
 
-
-        super.onViewCreated(view, savedInstanceState)
-
-        // Cargar las opciones del Spinner desde strings.xml
-        val opciones = resources.getStringArray(R.array.formulas_array)
-
-
-        // Asociar opciones con imágenes (deben estar en res/drawable)
-        val imageMap = mapOf(
-            opciones[0] to R.drawable.formula1,   // Imagen para "Ecuación de segundo grado"
-            opciones[1] to R.drawable.formula2,             // Imagen para "Volumen de un cilindro"
-            opciones[2] to R.drawable.formula3,     // Imagen para "Perímetro de un rectángulo"
-            opciones[3] to R.drawable.formula4,        // Imagen para "Formula de acelración"
+        // Deshabilitar botón por defecto
+        binding.btCalcular.isEnabled = false
+        binding.btCalcular.setBackgroundTintList(
+            ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray)
         )
 
-        // Crear instancias de los Fragments dinámicamente
+        val opciones = resources.getStringArray(R.array.formulas_array)
+
+        val imageMap = mapOf(
+            opciones[0] to R.drawable.formula1,
+            opciones[1] to R.drawable.formula2,
+            opciones[2] to R.drawable.formula3,
+            opciones[3] to R.drawable.formula4,
+        )
+
         val fragments = listOf(
             Formula1Fragment(),
             Formula2Fragment(),
@@ -81,7 +78,7 @@ class MainFragment : Fragment() {
 
         data class FormulaConfig(
             val nombre: String,
-            val hints: List<String> // etiquetas para los EditText visibles
+            val hints: List<String>
         )
 
         val configuraciones = listOf(
@@ -93,13 +90,28 @@ class MainFragment : Fragment() {
                 getString(R.string.velocidad_inicial), getString(R.string.tiempo)))
         )
 
-
-        // Asociar cada opción con su Fragment usando zip()
         val fragmentMap = opciones.zip(fragments).toMap()
 
-        // Cambiar la aspectos claves  cuando se seleccione una opción en el Spinner
-        binding.spOpciones.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        // TextWatcher para habilitar o deshabilitar el botón
+        val watcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) = validarCamposYHabilitarBoton()
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        }
 
+        binding.input1.addTextChangedListener(watcher)
+        binding.input2.addTextChangedListener(watcher)
+        binding.input3.addTextChangedListener(watcher)
+
+        // Limitar a 10 caracteres por entrada
+        val filtro10 = arrayOf(android.text.InputFilter.LengthFilter(10))
+        binding.input1.filters = filtro10
+        binding.input2.filters = filtro10
+        binding.input3.filters = filtro10
+
+
+
+        binding.spOpciones.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -108,20 +120,24 @@ class MainFragment : Fragment() {
             ) {
                 val opcionSeleccionada = opciones[position]
 
-                // Cambiar imagen
                 imageMap[opcionSeleccionada]?.let { imageRes ->
                     binding.ivFormula.setImageResource(imageRes)
                 }
 
-                // Ocultar todos los inputs
+                // Limpiar campos y ocultar inputs
+                binding.input1.text.clear()
+                binding.input2.text.clear()
+                binding.input3.text.clear()
+                binding.btCalcular.isEnabled = false
+                binding.btCalcular.setBackgroundTintList(
+                    ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray)
+                )
+
                 binding.input1.visibility = View.GONE
                 binding.input2.visibility = View.GONE
                 binding.input3.visibility = View.GONE
 
-                // Verificar si es la ecuación de segundo grado
                 val esEcuacionSegundoGrado = opcionSeleccionada == configuraciones[0].nombre
-
-                // Determinar el tipo de entrada permitido
                 val inputTypeCorrecto = if (esEcuacionSegundoGrado)
                     android.text.InputType.TYPE_CLASS_NUMBER or
                             android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL or
@@ -130,7 +146,6 @@ class MainFragment : Fragment() {
                     android.text.InputType.TYPE_CLASS_NUMBER or
                             android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
 
-                // Mostrar los inputs necesarios con hints y tipo correcto
                 configuraciones.find { it.nombre == opcionSeleccionada }?.hints?.let { hints ->
                     if (hints.isNotEmpty()) {
                         binding.input1.apply {
@@ -155,18 +170,12 @@ class MainFragment : Fragment() {
                     }
                 }
             }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        // Evento del botón Calcular
         binding.btCalcular.setOnClickListener {
-
             val opcionSeleccionada = binding.spOpciones.selectedItem.toString()
-
-            val config = configuraciones.find { it.nombre == opcionSeleccionada }
-
-            // Leer los valores solo si los campos están visibles
             val valor1 = if (binding.input1.visibility == View.VISIBLE)
                 binding.input1.text.toString().toDoubleOrNull() else null
 
@@ -175,16 +184,6 @@ class MainFragment : Fragment() {
 
             val valor3 = if (binding.input3.visibility == View.VISIBLE)
                 binding.input3.text.toString().toDoubleOrNull() else null
-
-            // Validar si todos los necesarios están completos
-            val camposNecesarios = config?.hints?.size ?: 0
-            val valoresList = listOf(valor1, valor2, valor3).take(camposNecesarios)
-
-            if (valoresList.any { it == null }) {
-                Toast.makeText(requireContext(),
-                    getString(R.string.completa_todos_los_valores_requeridos), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
 
             val fragment = fragmentMap[opcionSeleccionada]?.withArguments(
                 "valor1" to valor1!!,
@@ -199,11 +198,27 @@ class MainFragment : Fragment() {
                     .commit()
             }
 
-            // Limpiar los campos después del cálculo
+            // Limpiar después de calcular
             binding.input1.text.clear()
             binding.input2.text.clear()
             binding.input3.text.clear()
+            binding.btCalcular.isEnabled = false
+            binding.btCalcular.setBackgroundTintList(
+                ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray)
+            )
         }
     }
 
+    private fun validarCamposYHabilitarBoton() {
+        val inputs = listOf(binding.input1, binding.input2, binding.input3)
+            .filter { it.visibility == View.VISIBLE }
+
+        val todosLlenos = inputs.all { it.text.toString().toDoubleOrNull() != null }
+        binding.btCalcular.isEnabled = todosLlenos
+
+        val color = if (todosLlenos) R.color.bt_calcular else android.R.color.darker_gray
+        binding.btCalcular.setBackgroundTintList(
+            ContextCompat.getColorStateList(requireContext(), color)
+        )
+    }
 }
