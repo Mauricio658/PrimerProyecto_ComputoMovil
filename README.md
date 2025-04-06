@@ -32,12 +32,12 @@ P = 2(l + w)
 ```
 **Datos requeridos:** `l` (largo), `w` (ancho)
 
-### 4. **Teorema de Pitágoras**
-Calcula la hipotenusa de un triángulo rectángulo:
+### 4. **Formula de la aceleración **
+Calcula la aceleración de un objeto:
 ```math
-c^2 = a^2 + b^2
+a = \frac{vf-vi}{t}
 ```
-**Datos requeridos:** `a`, `b`
+**Datos requeridos:** `vf`, `vi`, `t`
 
 ## 📷 Capturas de Pantalla
 
